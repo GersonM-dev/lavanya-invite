@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UndanganController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/undangan/{undangan:slug}', [UndanganController::class, 'show'])
+    ->name('undangan.show');
