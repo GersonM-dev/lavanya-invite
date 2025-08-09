@@ -143,8 +143,10 @@ class UndanganResource extends Resource
                 Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('nama_panggilan_pria'),
                 Tables\Columns\TextColumn::make('nama_panggilan_wanita'),
-                Tables\Columns\TextColumn::make('tanggal_acara')->date(),
-                Tables\Columns\TextColumn::make('tanggal_resepsi')->date(),
+                Tables\Columns\TextColumn::make('slug')
+                    ->label('Link Undangan (klik untuk salin)')->prefix('invite.lavanyaenterprise.id/')->searchable()->copyable()
+                    ->searchable()->copyMessage('Link Undangan disalin')->copyableState(fn(string $state): string => "invite.lavanyaenterprise.id/{$state}")
+                    ->copyMessageDuration(1500),
             ])
             ->filters([
                 //
